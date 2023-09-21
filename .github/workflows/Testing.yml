@@ -1,0 +1,47 @@
+name: Action2 Test Windows
+
+on: [push, pull_request, workflow_dispatch]
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: windows-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.12"]
+        architecture: ["arm64"]
+
+    timeout-minutes: 30
+
+    name: Action2 Python ${{ matrix.python-version }} ${{ matrix.architecture }}
+
+    steps:
+    - name: Checkout action-test
+      uses: actions/checkout@v3
+      
+    - name: Powershell print
+      shell: pwsh
+      run: |
+          echo "Running in Powershell"
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: ${{ matrix.python-version }}
+
+    - name: Python print
+      run: |
+        python -c "print('Running python on Action2')"
+
+  success:
+    permissions:
+      contents: none
+    needs: build
+    runs-on: ubuntu-latest
+    name: Windows Test Successful
+    steps:
+      - name: Success
+        run: echo Windows Test Successful
