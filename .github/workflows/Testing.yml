@@ -36,7 +36,7 @@ jobs:
 
     - name: Python print
       run: |
-        python -c "print('Running python on Action2')"
+        ./python -c "print('Running python on Action2')"
 
   success:
     permissions:
