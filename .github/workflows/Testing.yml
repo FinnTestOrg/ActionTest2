@@ -22,8 +22,7 @@ jobs:
     - name: Checkout action-test
       uses: actions/checkout@v3
       
-    - name: Powershell print
-      shell: pwsh
+    - name: Echo
       run: |
           echo "Running in Powershell"
 
