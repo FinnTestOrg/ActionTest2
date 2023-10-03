@@ -36,7 +36,7 @@ jobs:
 
     - name: Python print
       run: |
-        .\pythonarm64.${{ matrix.python-version }}\tools\python.exe -c "print('Running python on Action2')"
+        .\pythonarm64.${{ matrix.python-version }}\tools\python.exe -c "print('Running python on ActionTest2')"
 
   success:
     permissions:
